@@ -29,4 +29,6 @@
 ### 里程碑
 [Road Map](https://github.com/Isekai-Seikatsu/1062-java-G16/wiki "QWQ")
 
+### 實際影片
+https://www.youtube.com/watch?v=GRcz-AfMSkY
 

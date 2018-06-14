@@ -1,0 +1,144 @@
+<scene exported_by="user" previous_export_time="0" export_time="1528792875.8301399" formatVersion="1.0.1" >
+  <nodes >
+    <node name="Hemi.003" >
+      <position z="10.592344" y="7.473198" x="-6.930227" />
+      <rotation qx="0.178940" qw="0.972491" qz="-0.141060" qy="-0.048408" />
+      <scale z="1.000000" y="1.000000" x="1.000000" />
+      <user_data type="IDPropertyGroup" value='&lt;bpy id prop: owner="OBHemi.003", name="cycles_visibility", address=0x000001AEF385B988&gt;' name="cycles_visibility" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Camera.001" >
+      <position z="20.862751" y="1.998725" x="14.953613" />
+      <rotation qx="0.693774" qw="0.645553" qz="-0.232334" qy="0.218999" />
+      <scale z="1.000000" y="1.000000" x="1.000000" />
+      <game >
+        <sensors >
+          <sensor type="ALWAYS" name="Always" />
+        </sensors>
+        <actuators >
+          <actuator type="CAMERA" name="Camera" >
+            <component type="Object" value="Player_BOX.001" name="object" />
+            <component type="float" value="3.755282163619995" name="height" />
+            <component type="float" value="0.0" name="min" />
+            <component type="float" value="20.0" name="max" />
+            <component type="str" value="POS_X" name="axis" />
+          </actuator>
+        </actuators>
+      </game>
+      <camera projectionType="perspective" fov="0.5033799435163735" name="Camera.000" >
+        <clipping farPlaneDist="100.0" nearPlaneDist="0.10000000149011612" far="100.0" near="0.10000000149011612" />
+      </camera>
+    </node>
+    <node name="Player_BOX.001" >
+      <position z="-0.000000" y="2.496279" x="0.000000" />
+      <rotation qx="0.000000" qw="1.000000" qz="-0.000000" qy="0.000000" />
+      <scale z="1.000000" y="1.000000" x="1.000000" />
+      <game >
+        <sensors >
+          <sensor type="COLLISION" name="sensor2" >
+            <component type="str" value="boden" name="property" />
+          </sensor>
+          <sensor type="KEYBOARD" name="Keyboard" />
+          <sensor type="KEYBOARD" name="walk  forward K" />
+          <sensor type="KEYBOARD" name="walk backward K" />
+          <sensor type="MOUSE" name="run forward K" />
+          <sensor type="KEYBOARD" name="to the right" />
+          <sensor type="KEYBOARD" name="to the left" />
+          <sensor type="KEYBOARD" name="dragon_fire" />
+          <sensor type="MOUSE" name="wings" />
+        </sensors>
+        <actuators >
+          <actuator type="MOTION" name="walk  forward M" />
+          <actuator type="MOTION" name="walk backward" />
+          <actuator type="MOTION" name="run  forward" />
+          <actuator type="MOTION" name="L_act" />
+          <actuator type="MOTION" name="R_act" />
+          <actuator type="MOTION" name="Jump act1" />
+          <actuator type="PROPERTY" name="act" />
+          <actuator type="PROPERTY" name="act jump" />
+          <actuator type="MOTION" name="act1" />
+        </actuators>
+      </game>
+      <entity ghost="False" inertia_tensor="0.4000000059604645" lock_trans_x="False" friction_y="1.0" lock_trans_z="False" physics_type="DYNAMIC" name="Cube.006" friction_z="1.0" collisionPrim="triangle_mesh" actor="True" lock_rot_x="False" velocity_min="0.0" mass="10.0" mass_radius="1.0" velocity_max="0.0" damping_rot="0.45271292328834534" damping_trans="0.0" lock_trans_y="False" lock_rot_z="False" meshFile="Cube.006.mesh" lock_rot_y="False" anisotropic_friction="True" friction_x="1.0" >
+        <user_data type="IDPropertyGroup" value='&lt;bpy id prop: owner="MECube.006", name="ms3d", address=0x000001AEF385D878&gt;' name="ms3d" />
+      </entity>
+      <node name="a.001" >
+        <position z="-0.000000" y="2.496279" x="0.000000" />
+        <rotation qx="0.003452" qw="0.999994" qz="-0.000000" qy="0.000000" />
+        <scale z="0.171561" y="0.171561" x="0.171561" />
+        <game >
+          <sensors >
+            <sensor type="ALWAYS" name="sensor" />
+          </sensors>
+          <actuators >
+            <actuator type="ACTION" name="idle" />
+            <actuator type="ACTION" name="walk  forward" />
+            <actuator type="ACTION" name="walk  backward" />
+            <actuator type="ACTION" name="run" />
+            <actuator type="ACTION" name="to the right" />
+            <actuator type="ACTION" name="to the left" />
+            <actuator type="ACTION" name="wings" />
+            <actuator type="ACTION" name="dragon_fire" />
+            <actuator type="ACTION" name="Armature" />
+            <actuator type="ACTION" name="Armature1" />
+          </actuators>
+        </game>
+        <node name="Cube.001" >
+          <position z="-0.000000" y="0.000000" x="-0.000000" />
+          <rotation qx="-0.003452" qw="0.999994" qz="0.000000" qy="-0.000000" />
+          <scale z="5.828835" y="5.828835" x="5.828843" />
+          <user_data type="IDPropertyGroup" value='&lt;bpy id prop: owner="OBCube.001", name="coat3D", address=0x000001AEF385BC58&gt;' name="coat3D" />
+          <user_data type="IDPropertyGroup" value='&lt;bpy id prop: owner="OBCube.001", name="cycles_visibility", address=0x000001AEF385BBC8&gt;' name="cycles_visibility" />
+          <user_data type="IDPropertyGroup" value='&lt;bpy id prop: owner="OBCube.001", name="cycles", address=0x000001AEF385A308&gt;' name="cycles" />
+          <game >
+            <sensors />
+            <actuators />
+          </game>
+          <entity ghost="False" inertia_tensor="0.4000000059604645" lock_trans_x="False" friction_y="1.0" lock_trans_z="False" physics_type="NO_COLLISION" name="Cube.010" friction_z="1.0" actor="False" lock_rot_x="False" velocity_min="0.0" mass="1.0" mass_radius="1.0" velocity_max="0.0" damping_rot="0.10000000149011612" damping_trans="0.03999999910593033" lock_trans_y="False" lock_rot_z="False" meshFile="Cube.010.mesh" lock_rot_y="False" anisotropic_friction="False" friction_x="1.0" >
+            <user_data type="IDPropertyGroup" value='&lt;bpy id prop: owner="MECube.010", name="ms3d", address=0x000001AEF385E718&gt;' name="ms3d" />
+            <user_data type="IDPropertyGroup" value='&lt;bpy id prop: owner="MECube.010", name="cycles", address=0x000001AEF385D518&gt;' name="cycles" />
+          </entity>
+        </node>
+        <node name="Fire_Empty.001" >
+          <position z="25.910404" y="14.417439" x="0.001346" />
+          <rotation qx="0.767583" qw="0.640169" qz="-0.025920" qy="0.018123" />
+          <scale z="5.050978" y="5.050976" x="5.050975" />
+          <game >
+            <sensors >
+              <sensor type="ALWAYS" name="Always" />
+              <sensor type="ALWAYS" name="Always1" />
+            </sensors>
+            <actuators >
+              <actuator type="EDIT_OBJECT" name="act1" >
+                <component type="str" value="RESTOREDYN" name="dynamic_operation" />
+                <component type="Vector" value="0.0 0.0 30.0" name="linear_velocity" />
+                <component type="float" value="0.0" name="mass" />
+                <component type="POINTER" value="" name="mesh" />
+                <component type="str" value="ADDOBJECT" name="mode" />
+                <component type="POINTER" value="" name="object" />
+                <component type="int" value="50" name="time" />
+                <component type="POINTER" value="" name="track_object" />
+                <component type="bool" value="False" name="use_3d_tracking" />
+                <component type="bool" value="False" name="use_local_angular_velocity" />
+                <component type="bool" value="True" name="use_local_linear_velocity" />
+                <component type="bool" value="True" name="use_replace_display_mesh" />
+                <component type="bool" value="False" name="use_replace_physics_mesh" />
+              </actuator>
+              <actuator type="ACTION" name="Action" />
+            </actuators>
+          </game>
+        </node>
+      </node>
+    </node>
+  </nodes>
+  <externals />
+  <environment >
+    <colourAmbient b="0.0" r="0.0" g="0.0" />
+    <colourBackground b="0.0" r="0.0" g="0.0" />
+    <colourDiffuse b="0.0" r="0.0" g="0.0" />
+    <fog linearStart="0.0" colourR="0.0" colourG="0.0" linearEnd="50.0" mode="exp" colourB="0.0" expDensity="0.0" />
+  </environment>
+</scene>
