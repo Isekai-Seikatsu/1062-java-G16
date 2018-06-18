@@ -1,0 +1,71 @@
+<scene previous_export_time="1528786837.429927" formatVersion="1.0.1" exported_by="user" export_time="1528786937.6315074" >
+  <nodes >
+    <node name="eyes_mesh" >
+      <position x="-97.355072" y="0.000002" z="-2.024412" />
+      <rotation qw="0.000000" qz="0.000000" qy="0.707106" qx="0.707107" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <user_data value="166" name="MaxHandle" type="int" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity friction_y="1.0" lock_trans_x="False" physics_type="STATIC" anisotropic_friction="False" actor="False" lock_trans_z="False" lock_rot_x="False" velocity_min="0.0" damping_trans="0.03999999910593033" friction_x="1.0" mass="1.0" damping_rot="0.10000000149011612" name="無標題" mass_radius="1.0" lock_rot_z="False" ghost="False" meshFile="無標題.mesh" lock_rot_y="False" lock_trans_y="False" velocity_max="0.0" friction_z="1.0" inertia_tensor="0.4000000059604645" />
+    </node>
+    <node name="Armature" >
+      <position x="0.000000" y="0.000000" z="-0.000000" />
+      <rotation qw="0.707107" qz="-0.000000" qy="0.000000" qx="0.707107" />
+      <scale x="0.025400" y="0.025400" z="0.025400" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <node name="character_mesh" >
+        <position x="-0.000000" y="0.000000" z="0.000003" />
+        <rotation qw="0.707107" qz="-0.000000" qy="-0.000000" qx="-0.707107" />
+        <scale x="1.000000" y="1.000000" z="1.000000" />
+        <user_data value="168" name="MaxHandle" type="int" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+        <entity friction_y="1.0" lock_trans_x="False" physics_type="STATIC" anisotropic_friction="False" actor="False" lock_trans_z="False" lock_rot_x="False" velocity_min="0.0" damping_trans="0.03999999910593033" friction_x="1.0" mass="1.0" damping_rot="0.10000000149011612" name="無標題.001" mass_radius="1.0" lock_rot_z="False" ghost="False" meshFile="無標題.001.mesh" lock_rot_y="False" lock_trans_y="False" velocity_max="0.0" friction_z="1.0" inertia_tensor="0.4000000059604645" />
+      </node>
+    </node>
+    <node name="Character001" >
+      <position x="0.000000" y="0.000000" z="-0.000000" />
+      <rotation qw="-0.000000" qz="-0.000000" qy="0.707107" qx="0.707107" />
+      <scale x="0.025400" y="0.025400" z="0.025400" />
+      <user_data value="80" name="MaxHandle" type="int" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Lamp" >
+      <position x="4.568758" y="2.537681" z="2.028549" />
+      <rotation qw="0.570947" qz="-0.272171" qy="0.755880" qx="0.169076" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light powerScale="1.0" name="Lamp" type="point" shadow="true" >
+        <position x="4.568758" y="2.537681" z="2.028549" />
+        <lightAttenuation constant="1.0" linear="0.03333335240683057" quadratic="0.0" range="5000" />
+        <colourDiffuse g="1.0" r="1.0" b="1.0" />
+        <colourSpecular g="1.0" r="1.0" b="1.0" />
+        <colourShadow g="1.0" r="1.0" b="1.0" />
+      </light>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\user\Desktop\角色\defaultMat.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
+    <colourDiffuse g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
+    <colourAmbient g="0.0" r="0.0" b="0.0" />
+  </environment>
+</scene>
