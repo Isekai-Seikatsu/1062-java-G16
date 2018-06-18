@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.logging.Level;
@@ -22,6 +23,8 @@ import java.util.logging.Logger;
 public class ClientMain extends SimpleApplication {
 
     private Client client;
+
+    private String serverHost;
 
     //  some app state
     private BulletAppState bulletAppState;
@@ -39,9 +42,23 @@ public class ClientMain extends SimpleApplication {
     private static final Logger LOGGER = Logger.getLogger(ClientMain.class.getName());
 
     public static void main(String[] args) {
+        
+        //  let user input the server that want to connect
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the host of server you want to connect: ");
+        String host = scanner.next();
+        LOGGER.log(Level.INFO, "The Host Server: {0}", host);
+
+        //  initialize the message class to Serialize
         UtNetworking.InitSerializer();
-        ClientMain app = new ClientMain();
+        
+        //  create client
+        ClientMain app = new ClientMain(host);
         app.start();
+    }
+
+    public ClientMain(String serverHost) {
+        this.serverHost = serverHost;
     }
 
     @Override
@@ -49,7 +66,7 @@ public class ClientMain extends SimpleApplication {
         LOGGER.log(Level.INFO, "ClientMan simpleInitialize Start ...");
 
         try {
-            client = Network.connectToServer("localhost", UtNetworking.PORT);
+            client = Network.connectToServer(serverHost, UtNetworking.PORT);
             client.start();
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, "can not connect to server", ex);
