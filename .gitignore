@@ -2,3 +2,6 @@
 /HelloWorldTuTorial/build/
 
 *.class
+/SRPG/build/
+/jme3test.helloworld/nbproject/private/
+/jme3test.helloworld/build/
