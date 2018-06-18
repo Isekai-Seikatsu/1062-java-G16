@@ -2,7 +2,7 @@ package MainGame;
 
 import com.jme3.math.Vector3f;
 import com.jme3.network.serializing.Serializer;
-import java.text.CharacterIterator;
+import java.util.Map;
 
 public class UtNetworking {
 
@@ -13,7 +13,7 @@ public class UtNetworking {
         Serializer.registerClasses(
                 TextMessage.class, 
                 UserActionMessage.class,
-                CharactorInfoMessage.class
+                CharactorsInfoMessage.class
         );
     }
 
@@ -34,18 +34,18 @@ public class UtNetworking {
     }
     
     @com.jme3.network.serializing.Serializable
-    public static class CharactorInfoMessage extends com.jme3.network.AbstractMessage {
-        private Vector3f pos;
+    public static class CharactorsInfoMessage extends com.jme3.network.AbstractMessage {
+        private Map<String, Vector3f> positionsMap;
         
-        public CharactorInfoMessage() {
+        public CharactorsInfoMessage() {
         }
             
-        public CharactorInfoMessage(Vector3f pos) {
-            this.pos = pos;
+        public CharactorsInfoMessage(Map<String, Vector3f> positionsMap) {
+            this.positionsMap = positionsMap;
         }
         
-        public Vector3f getPos() {
-            return pos;
+        public Map<String, Vector3f> getPosMap() {
+            return positionsMap;
         }
     }
 

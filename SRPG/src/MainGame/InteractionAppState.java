@@ -30,18 +30,29 @@ import com.jme3.scene.shape.Sphere;
  */
 public class InteractionAppState extends BaseAppState implements AnalogListener, ActionListener {
 
-    private Node charactorNode, sceneNode;
+    private CharactorAppState playerApp;
+    private Node charactorNode;
+    private Node sceneNode;
     private SimpleApplication app;
     private Geometry marker;
 
+    public InteractionAppState(CharactorAppState playerApp) {
+        this.playerApp = playerApp;
+    }
+    
     @Override
     protected void initialize(Application app) {
+        System.out.println("InteractionAppState Initialize Start ...");
         this.app = (SimpleApplication) app;
 
         initMark();
 
         sceneNode = getStateManager().getState(SceneAppState.class).getSceneNode();
-        charactorNode = getStateManager().getState(CharactorAppState.class).getCharactorNode();
+//        charactorNode = getStateManager().getState(CharactorAppState.class).getCharactorNode();
+        charactorNode = playerApp.getCharactorNode();
+
+        app.getInputManager().setCursorVisible(true);
+        System.out.println("InteractionAppState Initialize Done ...");
     }
 
     @Override
@@ -58,7 +69,7 @@ public class InteractionAppState extends BaseAppState implements AnalogListener,
         app.getInputManager().deleteMapping("ToggleAspect");
         app.getInputManager().deleteMapping("Step");
         app.getInputManager().deleteMapping("Movement");
-        
+
         app.getInputManager().removeListener(this);
 
     }
@@ -97,22 +108,24 @@ public class InteractionAppState extends BaseAppState implements AnalogListener,
 
                 break;
             case "Movement":
-                CollisionResults results = new CollisionResults();
+                if (isPressed) {
+                    CollisionResults results = new CollisionResults();
 
-                Vector2f click2d = app.getInputManager().getCursorPosition();
-                Vector3f click3d = app.getCamera().getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).clone();
-                Vector3f dir = app.getCamera().getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 1f).subtractLocal(click3d).normalizeLocal();
+                    Vector2f click2d = app.getInputManager().getCursorPosition();
+                    Vector3f click3d = app.getCamera().getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 0f).clone();
+                    Vector3f dir = app.getCamera().getWorldCoordinates(new Vector2f(click2d.x, click2d.y), 1f).subtractLocal(click3d).normalizeLocal();
 
-                sceneNode.collideWith(new Ray(click3d, dir), results);
+                    sceneNode.collideWith(new Ray(click3d, dir), results);
 
-                if (results.size() > 0) {
-                    Vector3f clickPt = results.getClosestCollision().getContactPoint();
-                    charactorNode.setUserData("TargetDestination", clickPt);
+                    if (results.size() > 0) {
+                        Vector3f clickPt = results.getClosestCollision().getContactPoint();
+                        charactorNode.setUserData("TargetDestination", clickPt);
 
-                    marker.setLocalTranslation(clickPt);
-                    app.getRootNode().attachChild(marker);
-                } else {
-                    app.getRootNode().detachChild(marker);
+                        marker.setLocalTranslation(clickPt);
+                        app.getRootNode().attachChild(marker);
+                    } else {
+                        app.getRootNode().detachChild(marker);
+                    }
                 }
                 break;
 
