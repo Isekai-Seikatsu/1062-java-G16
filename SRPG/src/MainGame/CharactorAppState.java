@@ -12,47 +12,63 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.scene.shape.Box;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class CharactorAppState extends BaseAppState {
 
     private Node charactorNode;
+    private final String name;
+    private boolean inited;
 
     private SimpleApplication app;
     private BetterCharacterControl charactorControl;
 
     private static final Logger LOGGER = Logger.getLogger(CharactorAppState.class.getName());
 
+    public CharactorAppState(String name) {
+        this.name = name;
+    }
+
     @Override
     protected void initialize(Application app) {
-        System.out.println("CharactorAppState Initialize...");
+        LOGGER.log(Level.INFO, "CharactorAppState Initialize...");
 
         this.app = ((SimpleApplication) app);
 
-        //  charactor init
-        charactorNode = new Node("Charator");
+        //  create the node that be attached by player (charactor)
+        charactorNode = new Node(name);
         charactorNode.attachChild(setupCharactor());
+
+        //  initialize the datas of the player
         charactorNode.setUserData("aspect", true);
         charactorNode.setUserData("TargetDestination", null);
         charactorNode.setUserData("MovementSpeed", 20f);
 
-        charactorControl = new BetterCharacterControl(1.414F, 3.0F, 1.0F);
+        //  create the physical body shape and control then be added by charactor
+        charactorControl = new BetterCharacterControl(1.414F, 2.1F, 1.0F);
         charactorNode.addControl(charactorControl);
+        
+        //  init the gravity of player
+        charactorControl.setGravity(new Vector3f(0, -100f, 0));
 
-        charactorControl.setGravity(new Vector3f(0, -1000f, 0));
+        //  init the position of player
         charactorControl.warp(new Vector3f(0, 10f, 0));
 
-        //  physics setting
+        //  physical setting
         ((BulletAppState) getStateManager().getState(BulletAppState.class)).getPhysicsSpace().add(charactorControl);
         ((BulletAppState) getStateManager().getState(BulletAppState.class)).getPhysicsSpace().addAll(charactorNode);
 
-        app.getInputManager().setCursorVisible(true);
-        System.out.println("CharactorAppState Initialize... DONE");
-
+        LOGGER.log(Level.INFO, "CharactorAppState Initialize Done...");
+        
+        //  initialized completely
+        inited = true;
     }
 
     @Override
     protected void cleanup(Application app) {
+
+        ((SimpleApplication) app).getRootNode().detachChild(charactorNode);
         charactorNode.removeFromParent();
         ((BulletAppState) getStateManager().getState(BulletAppState.class)).getPhysicsSpace().remove(charactorControl);
         ((BulletAppState) getStateManager().getState(BulletAppState.class)).getPhysicsSpace().removeAll(charactorNode);
@@ -70,9 +86,6 @@ public class CharactorAppState extends BaseAppState {
 
     @Override
     public void update(float tpf) {
-        if (charactorNode.getUserData("aspect")) {
-            app.getCamera().lookAt(charactorNode.getLocalTranslation(), new Vector3f(0.0F, 1.0F, 0.0F));
-        }
 
     }
 
@@ -97,5 +110,13 @@ public class CharactorAppState extends BaseAppState {
 
     public BetterCharacterControl getCharactorControl() {
         return charactorControl;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isInited() {
+        return inited;
     }
 }

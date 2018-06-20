@@ -11,34 +11,47 @@ import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SceneAppState extends BaseAppState {
 
     private Node sceneNode;
     private RigidBodyControl floorControl;
 
+    private static final Logger LOGGER = Logger.getLogger(SceneAppState.class.getName());
+
     @Override
     protected void initialize(Application app) {
-        System.out.println("SceneAppState Initialize...");
+        LOGGER.log(Level.INFO, "SceneAppState Initialize...");
+        
+        // cast to SimpleApplication to gain the app of main thread
         app = (SimpleApplication) app;
+        
+        //  load the model of scene 
         sceneNode = (Node) app.getAssetManager().loadModel("Scenes/newScene.j3o");
 
-        sceneNode.move(new Vector3f(0, -10f, 0));
-
+        // create physic shape and control
         CollisionShape floorColliShape = CollisionShapeFactory.createMeshShape(sceneNode);
-
         floorControl = new RigidBodyControl(floorColliShape, 0.0F);
 
+        // add  control to scene that means floor
         sceneNode.addControl(floorControl);
-
+        
+        //  init the position of the floor's physics shape
         floorControl.setPhysicsLocation(new Vector3f(0.0F, -10.0F, 0.0F));
-        System.out.println("bas..." + getStateManager().getState(BulletAppState.class));
+        
+        //  attach app state
         getStateManager().getState(BulletAppState.class).getPhysicsSpace().add(floorControl);
         getStateManager().getState(BulletAppState.class).getPhysicsSpace().addAll(sceneNode);
 
+        //  add background color
         app.getViewPort().setBackgroundColor(new ColorRGBA(66f / 255f, 134f / 255f, 244f / 255f, 0.5f));
+        
+        //  lights
         setupLights();
-        System.out.println("SceneAppState Initialize... DONE");
+        
+        LOGGER.log(Level.INFO, "SceneAppState Initialize Done...");
     }
 
     @Override
