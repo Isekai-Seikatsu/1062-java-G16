@@ -1,0 +1,80 @@
+<scene exported_by="user" previous_export_time="1529514427.3711734" export_time="1529514466.3236992" formatVersion="1.0.1" >
+  <nodes >
+    <node name="Armature" >
+      <position x="0.000000" z="-0.000000" y="0.000000" />
+      <rotation qy="0.000000" qx="0.707107" qw="0.707107" qz="-0.000000" />
+      <scale x="0.025400" z="0.025400" y="0.025400" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <node name="Body_mesh" >
+        <position x="0.000000" z="-32.499943" y="-1.291876" />
+        <rotation qy="0.000000" qx="-0.707107" qw="0.707107" qz="0.000000" />
+        <scale x="1.000000" z="1.000000" y="1.000000" />
+        <user_data type="int" name="MaxHandle" value="4" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+        <entity lock_trans_x="False" actor="False" lock_trans_z="False" mass_radius="1.0" friction_z="1.0" lock_rot_y="False" friction_y="1.0" friction_x="1.0" lock_trans_y="False" anisotropic_friction="False" lock_rot_x="False" velocity_max="0.0" ghost="False" mass="1.0" name="無標題.004" inertia_tensor="0.4000000059604645" meshFile="無標題.004.mesh" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" velocity_min="0.0" lock_rot_z="False" physics_type="STATIC" />
+      </node>
+    </node>
+    <node name="Particle View 001" >
+      <position x="0.000000" z="-0.000000" y="0.000000" />
+      <rotation qy="0.000000" qx="-0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="0.025400" z="0.025400" y="0.025400" />
+      <user_data type="int" name="MaxHandle" value="108" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Character001" >
+      <position x="0.000000" z="-0.000000" y="0.000000" />
+      <rotation qy="0.707107" qx="0.707107" qw="-0.000000" qz="-0.000000" />
+      <scale x="0.025400" z="0.025400" y="0.025400" />
+      <user_data type="int" name="MaxHandle" value="7" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Character" >
+      <position x="0.000000" z="0.016512" y="0.527202" />
+      <rotation qy="0.000000" qx="-0.000000" qw="1.000000" qz="-0.000000" />
+      <scale x="0.025400" z="0.025400" y="0.025400" />
+      <user_data type="int" name="MaxHandle" value="6" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Lamp" >
+      <position x="4.076245" z="-1.005454" y="5.903862" />
+      <rotation qy="0.755880" qx="0.169076" qw="0.570947" qz="-0.272171" />
+      <scale x="1.000000" z="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light powerScale="1.0" type="point" name="Lamp" shadow="true" >
+        <position x="4.076245" z="-1.005454" y="5.903862" />
+        <lightAttenuation range="5000" linear="0.03333335240683057" quadratic="0.0" constant="1.0" />
+        <colourDiffuse g="1.0" r="1.0" b="1.0" />
+        <colourSpecular g="1.0" r="1.0" b="1.0" />
+        <colourShadow g="1.0" r="1.0" b="1.0" />
+      </light>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\user\Desktop\modle\soldier\Animation\Reptile@Idle\Character.004.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourDiffuse g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
+    <colourBackground g="0.05087608844041824" r="0.05087608844041824" b="0.05087608844041824" />
+    <colourAmbient g="0.0" r="0.0" b="0.0" />
+  </environment>
+</scene>

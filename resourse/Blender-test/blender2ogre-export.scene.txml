@@ -1,0 +1,32 @@
+<scene >
+  <entity id="2" >
+    <component sync="1" type="EC_Fog" name="Fog" >
+      <attribute value="0.0 0.0 0.0 0.0" name="Color" />
+      <attribute value="0.0" name="Start distance" />
+      <attribute value="50.0" name="End distance" />
+      <attribute value="0.001" name="Exponential density" />
+    </component>
+    <component sync="1" type="EC_EnvironmentLight" name="Environment Light" >
+      <attribute value="0 0 0 1" name="Sunlight color" />
+      <attribute value="0" name="Brightness" />
+      <attribute value="1.0 1.0 1.0 1" name="Ambient light color" />
+      <attribute value="-0.25 -1.0 -0.25" name="Sunlight direction vector" />
+      <attribute value="true" name="Sunlight cast shadows" />
+    </component>
+  </entity>
+  <entity id="100" >
+    <component sync="1" type="EC_Name" >
+      <attribute value="Hemi.003" name="name" />
+      <attribute value="" name="description" />
+    </component>
+    <component sync="1" type="EC_Placeable" >
+      <attribute value="-6.930227,7.473198,10.592344,110.461619,-2.616813,-16.958740,1.000000,1.000000,1.000000" name="Transform" />
+      <attribute value="false" name="Show bounding box" />
+      <attribute value="true" name="Visible" />
+      <attribute value="1" name="Selection layer" />
+    </component>
+    <component sync="1" type="EC_Name" >
+      <attribute value="Hemi.003" name="name" />
+    </component>
+  </entity>
+</scene>
