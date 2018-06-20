@@ -1,0 +1,46 @@
+<scene exported_by="user" export_time="1528790927.7878718" formatVersion="1.0.1" previous_export_time="0" >
+  <nodes >
+    <node name="Armature" >
+      <position z="-0.000000" x="0.000000" y="0.000000" />
+      <rotation qw="0.707107" qz="-0.000000" qy="0.000000" qx="0.707107" />
+      <scale z="0.025400" x="0.025400" y="0.025400" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <node name="character_mesh" >
+        <position z="0.000001" x="0.000002" y="0.000000" />
+        <rotation qw="0.706909" qz="0.016713" qy="0.016713" qx="-0.706909" />
+        <scale z="1.000000" x="1.000000" y="1.000000" />
+        <user_data name="MaxHandle" value="168" type="int" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+        <entity physics_type="STATIC" damping_trans="0.03999999910593033" lock_trans_x="False" lock_trans_z="False" actor="False" damping_rot="0.10000000149011612" friction_x="1.0" lock_trans_y="False" friction_y="1.0" mass="1.0" lock_rot_y="False" friction_z="1.0" ghost="False" lock_rot_x="False" velocity_min="0.0" name="無標題.001" lock_rot_z="False" anisotropic_friction="False" meshFile="無標題.001.mesh" velocity_max="0.0" mass_radius="1.0" inertia_tensor="0.4000000059604645" />
+      </node>
+    </node>
+    <node name="Lamp" >
+      <position z="-1.005454" x="4.076245" y="5.903862" />
+      <rotation qw="0.570947" qz="-0.272171" qy="0.755880" qx="0.169076" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light name="Lamp" shadow="true" powerScale="1.0" type="point" >
+        <position z="-1.005454" x="4.076245" y="5.903862" />
+        <lightAttenuation constant="1.0" quadratic="0.0" linear="0.03333335240683057" range="5000" />
+        <colourDiffuse b="1.0" g="1.0" r="1.0" />
+        <colourSpecular b="1.0" g="1.0" r="1.0" />
+        <colourShadow b="1.0" g="1.0" r="1.0" />
+      </light>
+    </node>
+  </nodes>
+  <externals />
+  <environment >
+    <colourBackground b="0.05087608844041824" g="0.05087608844041824" r="0.05087608844041824" />
+    <colourDiffuse b="0.05087608844041824" g="0.05087608844041824" r="0.05087608844041824" />
+    <colourAmbient b="0.0" g="0.0" r="0.0" />
+  </environment>
+</scene>
