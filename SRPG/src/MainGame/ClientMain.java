@@ -27,7 +27,7 @@ public class ClientMain extends SimpleApplication {
 
     private Client client;
 
-    private String serverHost;
+    private final String serverHost;
 
     //  some app state
     private BulletAppState bulletAppState;
