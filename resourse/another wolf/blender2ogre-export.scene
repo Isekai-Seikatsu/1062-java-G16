@@ -1,0 +1,66 @@
+<scene previous_export_time="1529550413.455479" exported_by="BlackNight" export_time="1529550727.7566457" formatVersion="1.0.1" >
+  <nodes >
+    <node name="Hemi" >
+      <position z="0.112685" x="0.199492" y="0.738491" />
+      <rotation qy="0.027360" qx="0.003273" qz="-0.390264" qw="0.920290" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Wolf_Skeleton" >
+      <position z="-0.000000" x="0.000000" y="0.000000" />
+      <rotation qy="0.000000" qx="0.000000" qz="-0.000000" qw="1.000000" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <node name="Wolf_obj_body_004" >
+        <position z="0.175072" x="-0.000000" y="0.337724" />
+        <rotation qy="0.000000" qx="0.000000" qz="-0.000000" qw="1.000000" />
+        <scale z="1.000000" x="1.000000" y="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+        <entity mass="1.0" meshFile="Cube.007.mesh" actor="False" friction_z="1.0" lock_rot_z="False" velocity_max="0.0" lock_trans_x="False" name="Cube.007" lock_rot_x="False" damping_rot="0.10000000149011612" friction_y="1.0" velocity_min="0.0" lock_trans_z="False" lock_rot_y="False" friction_x="1.0" lock_trans_y="False" mass_radius="1.0" inertia_tensor="0.4000000059604645" damping_trans="0.03999999910593033" ghost="False" physics_type="STATIC" anisotropic_friction="False" />
+      </node>
+    </node>
+    <node name="Lamp" >
+      <position z="-1.005454" x="4.076245" y="5.903862" />
+      <rotation qy="0.755880" qx="0.169076" qz="-0.272171" qw="0.570947" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light powerScale="1.0" type="point" shadow="true" name="Lamp" >
+        <position z="-1.005454" x="4.076245" y="5.903862" />
+        <lightAttenuation range="5000" linear="0.03333335240683057" quadratic="0.0" constant="1.0" />
+        <colourDiffuse g="1.0" b="1.0" r="1.0" />
+        <colourSpecular g="1.0" b="1.0" r="1.0" />
+        <colourShadow g="1.0" b="1.0" r="1.0" />
+      </light>
+    </node>
+    <node name="Camera" >
+      <position z="6.507640" x="7.481132" y="5.343665" />
+      <rotation qy="0.336872" qx="0.483536" qz="-0.208704" qw="0.780483" />
+      <scale z="1.000000" x="1.000000" y="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <camera fov="0.5033799435163735" projectionType="perspective" name="Camera" >
+        <clipping nearPlaneDist="0.10000000149011612" near="0.10000000149011612" far="100.0" farPlaneDist="100.0" />
+      </camera>
+    </node>
+  </nodes>
+  <externals />
+  <environment >
+    <colourAmbient g="0.0" b="0.0" r="0.0" />
+    <colourBackground g="0.05087608844041824" b="0.05087608844041824" r="0.05087608844041824" />
+    <colourDiffuse g="0.05087608844041824" b="0.05087608844041824" r="0.05087608844041824" />
+  </environment>
+</scene>
