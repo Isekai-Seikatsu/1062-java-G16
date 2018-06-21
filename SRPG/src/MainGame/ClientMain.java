@@ -1,8 +1,11 @@
 package MainGame;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.audio.AudioNode;
 import com.jme3.bullet.BulletAppState;
+import com.jme3.input.KeyInput;
 import com.jme3.input.controls.ActionListener;
+import com.jme3.input.controls.KeyTrigger;
 import com.jme3.math.Vector3f;
 import com.jme3.network.Client;
 import com.jme3.network.ClientStateListener;
@@ -24,7 +27,7 @@ public class ClientMain extends SimpleApplication {
 
     private Client client;
 
-    private String serverHost;
+    private final String serverHost;
 
     //  some app state
     private BulletAppState bulletAppState;
@@ -39,10 +42,13 @@ public class ClientMain extends SimpleApplication {
     //  the apps of all of the players
     private HashMap<String, CharactorAppState> charactorsAppMap;
 
+    //  add node
+    private AudioNode meow;
+
     private static final Logger LOGGER = Logger.getLogger(ClientMain.class.getName());
 
     public static void main(String[] args) {
-        
+
         //  let user input the server that want to connect
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the host of server you want to connect: ");
@@ -51,7 +57,7 @@ public class ClientMain extends SimpleApplication {
 
         //  initialize the message class to Serialize
         UtNetworking.InitSerializer();
-        
+
         //  create client
         ClientMain app = new ClientMain(host);
         app.start();
@@ -71,6 +77,15 @@ public class ClientMain extends SimpleApplication {
         } catch (IOException ex) {
             LOGGER.log(Level.SEVERE, "can not connect to server", ex);
         }
+
+        //  add music
+        meow = new AudioNode(assetManager, "Sounds/meow.ogg");
+        meow.setPositional(false);
+        meow.setLooping(true);
+
+        meow.setUserData("isPlayed", true);
+        meow.setUserData("music pitch", 1f);
+        meow.play();
 
         //  create the scene app
         sceneApp = new SceneAppState();
@@ -124,6 +139,11 @@ public class ClientMain extends SimpleApplication {
 
         });
 
+        //  add keys mapping
+        inputManager.addMapping("music pause", new KeyTrigger(KeyInput.KEY_M));
+        inputManager.addMapping("increase music pitch", new KeyTrigger(KeyInput.KEY_P));
+        inputManager.addMapping("decrease music pitch", new KeyTrigger(KeyInput.KEY_O));
+
         //  add the additional action to work with user's inputs
         inputManager.addListener(new ActionListener() {
             @Override
@@ -134,22 +154,59 @@ public class ClientMain extends SimpleApplication {
                     case "Movement":
                         if (isPressed) {
                             Vector3f pt = myPlayerApp.getCharactorNode().getUserData("TargetDestination");
-                            System.out.println("pt: " + pt);
                             client.send(new UtNetworking.UserActionMessage(pt));
 
                             LOGGER.log(Level.INFO, "client TargetDestination: {0}", pt);
                         }
 
                         break;
+
+                    case "music pause":
+                        if (isPressed) {
+                            meow.setUserData("isPlayed", !(boolean) meow.getUserData("isPlayed"));
+                            if (meow.getUserData("isPlayed")) {
+                                meow.play();
+                            } else {
+                                meow.pause();
+                            }
+
+                        }
+
+                        break;
+
+                    case "increase music pitch":
+                        if (isPressed) {
+                            meow.setUserData("music pitch", (float) meow.getUserData("music pitch") + 0.01f);
+                            if ((float) meow.getUserData("music pitch") > 2.0f) {
+                                meow.setUserData("music pitch", 2.0f);
+                            }
+
+                            meow.setPitch((float) meow.getUserData("music pitch"));
+                        }
+
+                        break;
+
+                    case "decrease music pitch":
+                        if (isPressed) {
+                            meow.setUserData("music pitch", (float) meow.getUserData("music pitch") - 0.01f);
+                            if ((float) meow.getUserData("music pitch") < 0.5f) {
+                                meow.setUserData("music pitch", 0.5f);
+                            }
+
+                            meow.setPitch((float) meow.getUserData("music pitch"));
+                        }
+
+                        break;
                 }
             }
 
-        }, "Movement");
+        }, "Movement", "music pause", "increase music pitch", "decrease music pitch");
 
         LOGGER.log(Level.INFO, "ClientMan simpleInitialize Done ...");
     }
 
     @Override
+
     public void simpleUpdate(float tpf) {
 
         //  text message print on gui
