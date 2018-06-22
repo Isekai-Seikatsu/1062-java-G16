@@ -96,7 +96,7 @@ public class SceneAppState extends BaseAppState {
     }
 
     public void setupDragon(Application app) {
-        dragon = (Node) app.getAssetManager().loadModel("Models/dragonwalk/Dragon_Mesh.mesh.xml");
+        dragon = (Node) app.getAssetManager().loadModel("Models/dragonwalk/Dragon_Mesh.mesh.j3o");
         dragon.setLocalScale(4f);
         dragon.lookAt(Vector3f.ZERO, Vector3f.UNIT_Y);
         dragon.setLocalRotation(new Quaternion().fromAngleAxis(FastMath.PI/1.38f,   new Vector3f(0,1,0)));
@@ -109,7 +109,7 @@ public class SceneAppState extends BaseAppState {
         draogonMat.setTexture("NormalMap", app.getAssetManager().loadTexture("Textures/textures/Dragon_Nor.jpg"));
         draogonMat.setBoolean("UseMaterialColors", true);  // needed for shininess
         draogonMat.setColor("Specular", ColorRGBA.White); // needed for shininess
-        draogonMat.setColor("Diffuse", ColorRGBA.White); // needed for shininess
+        draogonMat.setColor("Diffuse", ColorRGBA.Brown); // needed for shininess
         draogonMat.setFloat("Shininess", 5f); // shininess from 1-128
         TangentBinormalGenerator.generate(dragon);
 

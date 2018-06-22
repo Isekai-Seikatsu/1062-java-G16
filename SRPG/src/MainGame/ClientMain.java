@@ -176,7 +176,7 @@ public class ClientMain extends SimpleApplication {
 
                     case "increase music pitch":
                         if (isPressed) {
-                            meow.setUserData("music pitch", (float) meow.getUserData("music pitch") + 0.01f);
+                            meow.setUserData("music pitch", (float) meow.getUserData("music pitch") + 0.02f);
                             if ((float) meow.getUserData("music pitch") > 2.0f) {
                                 meow.setUserData("music pitch", 2.0f);
                             }
@@ -188,7 +188,7 @@ public class ClientMain extends SimpleApplication {
 
                     case "decrease music pitch":
                         if (isPressed) {
-                            meow.setUserData("music pitch", (float) meow.getUserData("music pitch") - 0.01f);
+                            meow.setUserData("music pitch", (float) meow.getUserData("music pitch") - 0.02f);
                             if ((float) meow.getUserData("music pitch") < 0.5f) {
                                 meow.setUserData("music pitch", 0.5f);
                             }
