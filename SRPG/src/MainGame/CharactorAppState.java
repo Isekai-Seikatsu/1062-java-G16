@@ -8,10 +8,9 @@ import com.jme3.bullet.control.BetterCharacterControl;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
-import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
-import com.jme3.scene.shape.Box;
+import com.jme3.util.TangentBinormalGenerator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -36,31 +35,31 @@ public class CharactorAppState extends BaseAppState {
 
         this.app = ((SimpleApplication) app);
 
-        //  create the node that be attached by player (charactor)
+        //  create the node that be attached by muscle (charactor)
         charactorNode = new Node(name);
-        charactorNode.attachChild(setupCharactor());
+        charactorNode.attachChild(setupCharactor(app));
 
-        //  initialize the datas of the player
+        //  initialize the datas of the muscle
         charactorNode.setUserData("aspect", true);
         charactorNode.setUserData("TargetDestination", null);
         charactorNode.setUserData("MovementSpeed", 20f);
 
         //  create the physical body shape and control then be added by charactor
-        charactorControl = new BetterCharacterControl(1.414F, 2.1F, 1.0F);
+        charactorControl = new BetterCharacterControl(20F, 23F, 50F);
         charactorNode.addControl(charactorControl);
-        
-        //  init the gravity of player
+
+        //  init the gravity of muscle
         charactorControl.setGravity(new Vector3f(0, -100f, 0));
 
-        //  init the position of player
-        charactorControl.warp(new Vector3f(0, 10f, 0));
+        //  init the position of muscle
+        charactorControl.warp(new Vector3f(0, 200f, 0));
 
         //  physical setting
         ((BulletAppState) getStateManager().getState(BulletAppState.class)).getPhysicsSpace().add(charactorControl);
         ((BulletAppState) getStateManager().getState(BulletAppState.class)).getPhysicsSpace().addAll(charactorNode);
 
         LOGGER.log(Level.INFO, "CharactorAppState Initialize Done...");
-        
+
         //  initialized completely
         inited = true;
     }
@@ -89,19 +88,25 @@ public class CharactorAppState extends BaseAppState {
 
     }
 
-    public Spatial setupCharactor() {
+    public Spatial setupCharactor(Application app) {
+        Spatial muscle = app.getAssetManager().loadModel("Models/muscle/no_title.002.mesh.j3o");
 
-        Box boxMesh = new Box(1.0F, 1.0F, 1.0F);
-        Geometry boxGeo = new Geometry("Colored Box", boxMesh);
-        Material boxMat = new Material(app.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
-        boxMat.setBoolean("UseMaterialColors", true);
-        boxMat.setColor("Ambient", ColorRGBA.Green);
-        boxMat.setColor("Diffuse", ColorRGBA.Green);
-        boxGeo.setMaterial(boxMat);
+        Material muscleMat = new Material(app.getAssetManager(), "Common/MatDefs/Light/Lighting.j3md");
+        muscleMat.setTexture("DiffuseMap", app.getAssetManager().loadTexture("Textures/Muscled_mutant_Diffuse_specular.tga"));
+        muscleMat.setTexture("NormalMap", app.getAssetManager().loadTexture("Textures/Muscled_mutant_normals.tga"));
 
-        Spatial charator = boxGeo;
-        charator.move(new Vector3f(0.0F, 1.0F, 0.0F));
-        return charator;
+        muscleMat.setBoolean("UseMaterialColors", true);  // needed for shininess
+        muscleMat.setColor("Specular", ColorRGBA.White); // needed for shininess
+        muscleMat.setColor("Diffuse", ColorRGBA.White); // needed for shininess
+        muscleMat.setFloat("Shininess", 5f); // shininess from 1-128
+
+        TangentBinormalGenerator.generate(muscle);
+
+        muscle.setMaterial(muscleMat);
+        muscle.setLocalScale(0.5f);
+
+        muscle.move(new Vector3f(0.0F, 1.0F, 0.0F));
+        return muscle;
     }
 
     public Node getCharactorNode() {

@@ -1,0 +1,1 @@
+java -XX:MaxDirectMemorySize=1024m -jar "QWQ Game-Server.jar"

@@ -32,3 +32,4 @@
 ### 實際影片
 https://www.youtube.com/watch?v=GRcz-AfMSkY
 
+https://drive.google.com/file/d/1x6EqIn9btzF9IoQEu08PDfpdSfYzqAG9/view
